@@ -1,0 +1,19 @@
+@charset "utf-8";
+
+@use "./_variables.scss" as *;
+
+// ブレークポイントの値を取得する関数
+
+@function getBreakpointValue($breakpoint) {
+    $value: map-get($breakpoints, $breakpoint);
+
+    // $valueがnullで、$breakpointが数値型であり、さらに単位を持っているか単位を持っていない場合
+    @if not $value and type-of($breakpoint) == number and (unit($breakpoint) == "px" or unit($breakpoint) == "") {
+        $value: $breakpoint;
+    } @else if not $value {
+        @warn "Unknown breakpoint: #{$breakpoint}.";
+        @return null;
+    }
+
+    @return $value;
+}

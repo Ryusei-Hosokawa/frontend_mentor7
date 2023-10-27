@@ -1,0 +1,27 @@
+@charset "utf-8";
+
+@use '../../global/global_index' as *;
+@use "../atoms/atoms_index" as atom;
+
+// ボタンが２つ格納されたコンポーネントここから //
+@mixin img_group($mBottom: 0) {
+    .img__group {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 0 $mBottom;
+        @include max(1270px) {
+            max-width: 689px;
+            justify-content: center;
+            gap: 11px;
+            margin: 0 auto $mBottom;
+        }
+        @include max(sm) {
+            gap: 24px 25px;
+        }
+        @include atom.img_cover();
+    }
+}
+// ボタンが２つ格納されたコンポーネントここまで //

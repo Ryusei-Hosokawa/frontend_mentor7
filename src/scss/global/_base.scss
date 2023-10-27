@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+// ベースここから //
+@mixin base($objectWidth: 1100px, $sidePadding: 15px) {
+    .base {
+        width: 100%;
+        max-width: calc($objectWidth + calc($sidePadding * 2));
+        margin: 0 auto;
+        padding: 0 $sidePadding;
+        @content;
+    }
+}
+// ベースここまで //

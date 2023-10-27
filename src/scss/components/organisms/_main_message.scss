@@ -1,0 +1,30 @@
+@charset "utf-8";
+
+@use "../../global/_global_index.scss" as *;
+@use "../atoms/atoms_index" as atom;
+@use "../molecules/molecules_index" as molecule;
+
+// ファーストビューのメインテキストとボタンここから //
+@mixin main_message() {
+    .message__cover {
+        &.md {
+            @include min(1271px) {
+                display: none;
+            }
+            @include max(1270px) {
+                display: block;
+            }
+        }
+        &.lg {
+            @include min(1271px) {
+                display: block;
+            }
+            @include max(1270px) {
+                display: none;
+            }
+        }
+        @include molecule.fv_txts();
+        @include molecule.fv_btns();
+    }
+}
+// ファーストビューのメインテキストとボタンここまで //

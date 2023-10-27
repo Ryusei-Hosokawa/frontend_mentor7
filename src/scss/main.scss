@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+@use "./global/_global_index.scss" as *;
+@use "./components/pages/_first_view.scss" as page_fv;
+@use "./components/pages/_secondary.scss" as page_second;
+@use "./components/templates/_index.scss" as template;
+
+/* トップページここから */
+#top {
+    font-family: "RedHatDisplay";
+    counter-reset: num;
+    @include page_fv.fv();
+    @include page_second.second();
+    @include template.footer();
+}
+/* トップページここまで */

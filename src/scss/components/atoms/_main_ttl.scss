@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+@use '../../global/global_index' as *;
+
+// メインタイトルここから //
+@mixin main_ttl($size: 40px, $mBottom: 32px) {
+    .content__ttl {
+        text-align: center;
+        font-size: $size;
+        font-weight: 900;
+        line-height: 1em;
+        margin: 0 0 $mBottom;
+        color: #28283d;
+    }
+}
+// メインタイトルここまで //

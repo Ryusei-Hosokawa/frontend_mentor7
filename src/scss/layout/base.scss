@@ -1,0 +1,97 @@
+@charset "UTF-8";
+@use "../utility/variable" as var;
+
+* {
+	font-family: var.$fontGothic;
+}
+body {
+	color: var.$baseColor;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	line-height: 1.6em;
+}
+a {
+	img {
+		opacity: 1;
+		transition: opacity 0.4s;
+	}
+	&:hover {
+		img {
+			opacity: 0.8;
+		}
+	}
+	&.opacity {
+		opacity: 1;
+		transition: opacity 0.4s;
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+}
+.clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+.center-block {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+.center {
+	text-align: center;
+}
+.flex {
+	display: flex;
+}
+.f-wrap {
+	flex-wrap: wrap;
+}
+.f-jc-sb {
+	justify-content: space-between;
+}
+.f-jc-c {
+	justify-content: center;
+}
+.f-jc-fe {
+	justify-content: flex-end;
+}
+.f-ai-c {
+	align-items: center;
+}
+.f-ai-fs {
+	align-items: flex-start;
+}
+.f-ai-fe {
+	align-items: flex-end;
+}
+.f-ac-c {
+	align-content: center;
+}
+.base {
+	width: 100%;
+	max-width: 1170px;
+	margin: 0 auto;
+	padding: 0 15px;
+}
+
+@media only screen and (min-width: 768px) {
+	.sp {
+		display: none !important;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.pc {
+		display: none !important;
+	}
+}

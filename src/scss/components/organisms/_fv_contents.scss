@@ -1,0 +1,31 @@
+@charset "utf-8";
+
+@use '../../global/media_query' as *;
+@use '../atoms/_atoms_index.scss' as atom;
+@use '../organisms/_main_message.scss' as main_message;
+
+// ファーストビューのコンテンツコンポーネントここから //
+@mixin fv_contents() {
+    .fv__contents{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 -50px 194px;
+        @include atom.img_cover($width: 394px, $bdrRadius: 0, $ovflHidden: initial);
+        @include max(1270px) {
+            justify-content: center;
+            gap: 72px 32px;
+            margin: 0 -50px 164px;
+        }
+        @include max(760px) {
+            gap: 48px 16px;
+            @include atom.img_cover($width: 47%, $bdrRadius: 0, $ovflHidden: initial);
+        }
+        @include max(sm) {
+            margin: 0 -50px 148px;
+        }
+        @include main_message.main_message();
+    }
+}
+// ファーストビューのコンテンツコンポーネントここまで //

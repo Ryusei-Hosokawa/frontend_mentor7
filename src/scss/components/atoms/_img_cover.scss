@@ -1,0 +1,11 @@
+@charset "utf-8";
+
+// ボタンが２つ格納されたコンポーネントここから //
+@mixin img_cover($width:max(23% , 164px), $bdrRadius: 8px, $ovflHidden: hidden) {
+    .img__cover {
+        width: $width;
+        border-radius: $bdrRadius;
+        overflow: $ovflHidden;
+    }
+}
+// ボタンが２つ格納されたコンポーネントここまで //

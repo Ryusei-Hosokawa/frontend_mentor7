@@ -1,0 +1,39 @@
+@charset "utf-8";
+
+@use "./_variables.scss" as *;
+@use "./_function.scss" as *;
+
+// メディアクエリコンポーネントここから //
+@mixin max($breakpoint) {
+    $value: getBreakpointValue($breakpoint);
+    // もし$valueがnullならメディアクエリの生成をスキップ
+    @if $value {
+        @media (max-width: $value) {
+            @content;
+        }
+    }
+}
+
+@mixin min($breakpoint) {
+    $value: getBreakpointValue($breakpoint);
+
+    // もし$valueがnullならメディアクエリの生成をスキップ
+    @if $value {
+        @media (min-width: $value) {
+            @content;
+        }
+    }
+}
+
+@mixin between($breakpoint1, $breakpoint2) {
+    $minValue: getBreakpointValue($breakpoint1);
+    $maxValue: getBreakpointValue($breakpoint2);
+
+    // もし$valueがnullならメディアクエリの生成をスキップ
+    @if $minValue and $maxValue {
+        @media ($minValue < width < $maxValue) {
+            @content;
+        }
+    }
+}
+// メディアクエリコンポーネントここまで //

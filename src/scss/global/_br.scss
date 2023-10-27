@@ -1,0 +1,27 @@
+@charset "utf-8";
+
+@use "./variables" as *;
+@use "./function" as *;
+@use "./media_query" as *;
+
+// brのレスポンシブ対応ここから //
+br.lg {
+    display: none;
+    @include min(md) {
+        display: block !important;
+    }
+}
+
+br.md {
+    display: none;
+    @include between(sm, 768px) {
+        display: block !important;
+    }
+}
+
+br.sm {
+    display: none;
+    @include max(sm) {
+        display: block !important;
+    }
+}

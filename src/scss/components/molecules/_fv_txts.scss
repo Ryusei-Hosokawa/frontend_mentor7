@@ -1,0 +1,18 @@
+@charset "utf-8";
+@use "../../global/global_index" as *;
+@use "../atoms/atoms_index" as atom;
+
+// ファーストビューのメインタイトルとテキストここから //
+@mixin fv_txts() {
+    @include atom.main_ttl($size: 64px, $mBottom: 34px);
+    @include atom.sta_txt();
+    @include atom.sta_btn();
+    @include max(md) {
+        @include atom.main_ttl($size: 48px, $mBottom: 24px);
+        @include atom.sta_txt($size: 16px, $liHeight: 1.625em);
+    }
+    @include max(md) {
+        @include atom.main_ttl($size: 40px, $mBottom: 24px);
+    }
+}
+// ファーストビューのメインタイトルとテキストここまで //
