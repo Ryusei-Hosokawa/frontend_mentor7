@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@use "../utility/variable" as var;
+@use "../utility/_variables.scss" as var;
 
 * {
 	font-family: var.$fontGothic;

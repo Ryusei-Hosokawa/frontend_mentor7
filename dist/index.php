@@ -11,9 +11,11 @@ include($path . 'libs/head.php');
     <?php include($path . 'libs/header.php'); ?>
 
     <main>
+        
     </main>
 
     <?php include($path . 'libs/footer.php'); ?>
+    <?php include($path . 'libs/svg.php'); ?>
 </body>
 
 </html>

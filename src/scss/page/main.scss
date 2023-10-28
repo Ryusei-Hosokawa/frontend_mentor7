@@ -1,0 +1,15 @@
+@charset "utf-8";
+
+@use "../utility/_index.scss" as *;
+@use "../components/pages/_top.scss" as page;
+@use "../components/templates/_index.scss" as template;
+
+/* トップページここから */
+#top {
+    font-family: "RedHatDisplay";
+    counter-reset: num;
+    @include template.header();
+    @include page.top();
+    @include template.footer();
+}
+/* トップページここまで */
