@@ -1,0 +1,82 @@
+// テキストここから //
+@charset "utf-8";
+
+@use "../../utility/_index.scss" as *;
+
+// ボタンここから //
+@mixin btn($type: "default") {
+    .btn {
+        position: relative;
+        display: inline-block;
+        font-family: $fontGothic;
+        font-weight: 900;
+        line-height: 1em;
+        letter-spacing: 0.2em;
+        color: #fff;
+        background: #000;
+        border: 1px solid #000;
+        transition: all 0.3s ease;
+        @if $type == "default" {
+            padding: 24px 80px 24px 28px;
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 50px;
+                height:  100%;
+                background: #D5966C;
+                box-sizing: content-box;
+                border: solid 1px #D5966C;
+                transform: translate(1px, -1px);
+            }
+            &::after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                right: 24px;
+                width: 14px;
+                height: 14px;
+                background: transparent;
+                border-right: solid 1px #fff;
+                border-bottom: solid 1px #fff;
+                transform: translate(0%, -50%) rotate(-45deg) skew(-10deg, -10deg);
+            }
+        } @else if $type == "left" {
+            padding: 24px 30px 24px 80px;
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 50px;
+                height:  100%;
+                background: #D5966C;
+                box-sizing: content-box;
+                border: solid 1px #D5966C;
+                transform: translate(-1px, -1px);
+            }
+            &::after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 18px;
+                width: 14px;
+                height: 14px;
+                background: transparent;
+                border-left: solid 1px #fff;
+                border-top: solid 1px #fff;
+                transform: translate(0%, -50%) rotate(-45deg) skew(-10deg, -10deg);
+            }
+        }
+        @include max(lg) {
+            font-size: 22px;
+            line-height: 1.45em;
+        }
+        @include max(md) {
+            font-size: 18px;
+            line-height: 1.55em;
+        }
+    }
+}
+// ボタンここまで //

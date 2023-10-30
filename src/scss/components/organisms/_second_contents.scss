@@ -1,7 +1,7 @@
 @charset "utf-8";
-@use '../../global/global_index' as *;
-@use '../atoms/atoms_index' as atom;
-@use '../molecules/molecules_index' as molecule;
+@use '../../utility/_index.scss' as *;
+@use '../atoms/_index.scss' as atom;
+@use '../molecules/_index.scss' as molecule;
 
 // ファーストビューのコンテンツコンポーネントここから //
 @mixin second_contents() {

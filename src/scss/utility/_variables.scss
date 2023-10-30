@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-@use './font' as *;
+@use './_font.scss' as *;
 
 // グローバル変数宣言ここから //
 /* 主なスマホ・タブレット・パソコンのブレイクポイント定義用の配列 */
@@ -11,7 +11,8 @@ $breakpoints: (
 );
 
 /* サイト内デフォルトゴシック体の宣言 */
-$fontGothic: "BigShouldersDisplay";
+$fontGothic: 'Big Shoulders Display';
+$fontStaTxt: 'Outfit';
 
 /* ベースカラーの宣言 */
 $baseColor: #333;

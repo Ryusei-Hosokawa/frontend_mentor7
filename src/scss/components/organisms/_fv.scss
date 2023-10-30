@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+@use '../atoms/_index.scss' as atom;
+@use './_fv_contents.scss' as organism;
+// ファーストビューここから //
+@mixin fv() {
+    .sect__fv {
+        padding: 189px 0 180px;
+        @include organism.fv_contents();
+    }
+}
+// ファーストビューここまで //

@@ -1,12 +1,14 @@
 @charset "utf-8";
 
-@use '../../utility/index' as *;
-@use '../atoms/_index.scss' as atom;
+@use "../../utility/index" as *;
+@use "../atoms/_index.scss" as atom;
 
 // ファーストビューのコンテンツコンポーネントここから //
 @mixin fv_contents() {
-    .fv__contents{
-        
+    .contents__cover {
+        @include atom.ttl("siteTtl");
+        @include atom.txt();
+        @include atom.btn(left);
     }
 }
 // ファーストビューのコンテンツコンポーネントここまで //

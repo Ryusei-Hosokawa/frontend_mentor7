@@ -29,12 +29,19 @@ include(APP_PATH.'libs/argument.php');
 <!--css-->
 <link href="<?php echo APP_ASSETS; ?>css/layout/reset.min.css" rel="stylesheet">
 <link href="<?php echo APP_ASSETS; ?>css/layout/base.min.css" rel="stylesheet">
+<link href="<?php echo APP_ASSETS; ?>css/page/top.min.css" rel="stylesheet">
 <!--/css-->
 
 <link rel="icon" href="<?php echo APP_ASSETS; ?>img/common/favicon.png">
 <link rel="shortcut icon" href="<?php echo APP_ASSETS; ?>img/common/favicon.png">
 <link rel="apple-touch-icon" href="<?php echo APP_ASSETS; ?>img/common/favicon.png">
 <meta name="apple-mobile-web-app-title" content="">
+
+<!-- google fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@900&family=Outfit:wght@300&display=swap" rel="stylesheet">
+<!-- google fonts -->
 
 <!-- WP
 ======================================================================-->

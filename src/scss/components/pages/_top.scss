@@ -1,8 +1,9 @@
 @charset "utf-8";
 
+@use '../atoms/index' as atom;
 @use '../organisms/index' as organism;
 /* トップページここから */
 @mixin top() {
-    
+    @include organism.fv();
 }
 /* トップページここまで */
