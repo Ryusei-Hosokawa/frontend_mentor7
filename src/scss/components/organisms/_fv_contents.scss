@@ -2,13 +2,17 @@
 
 @use "../../utility/index" as *;
 @use "../atoms/_index.scss" as atom;
+@use "../molecules/_index.scss" as molecule;
 
 // ファーストビューのコンテンツコンポーネントここから //
 @mixin fv_contents() {
     .contents__cover {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        justify-content: space-between;
         @include atom.ttl("siteTtl");
-        @include atom.txt();
-        @include atom.btn(left);
+        @include molecule.txt_cover();
     }
 }
 // ファーストビューのコンテンツコンポーネントここまで //

@@ -3,18 +3,17 @@
 // テキストここから //
 @charset "utf-8";
 
-@use '../../utility/_index.scss' as *;
+@use "../../utility/_index.scss" as *;
 
 // テキストここから //
-@mixin txt($type: 'default',$color: #000) {
+@mixin txt($type: "default", $mValue: 0, $color: #000) {
     .txt {
         font-family: $fontStaTxt;
         font-weight: 300;
+        margin: $mValue;
         color: $color;
-        @include max(lg) {
-            font-size: 22px;
-            line-height: 1.45em;
-        }
+        font-size: 22px;
+        line-height: 1.45em;
         @include max(md) {
             font-size: 18px;
             line-height: 1.55em;

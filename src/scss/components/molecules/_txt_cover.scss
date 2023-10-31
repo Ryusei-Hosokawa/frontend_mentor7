@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+@use '../atoms/index' as atom;
+// テキストとボタンを囲う要素ここから //
+@mixin txt_cover() {
+    .txt__cover {
+        width: 31%;
+        @include atom.txt($mValue: 0 0 64px);
+        @include atom.btn();
+    }
+   
+}
+// テキストとボタンを囲う要素ここまで //

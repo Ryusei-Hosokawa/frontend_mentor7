@@ -1,12 +1,26 @@
 @charset "utf-8";
 
-@use '../atoms/_index.scss' as atom;
-@use './_fv_contents.scss' as organism;
+@use "../../utility/index" as *;
+@use "../atoms/_index.scss" as atom;
+@use "./_fv_contents.scss" as organism;
 // ファーストビューここから //
 @mixin fv() {
     .sect__fv {
+        position: relative;
         padding: 189px 0 180px;
         @include organism.fv_contents();
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 0;
+            width: 540px;
+            height: 800px;
+            background: url(../../../assets/img/top/img01.jpg) no-repeat 50% 50% / cover;
+        }
+        @include base();
     }
 }
 // ファーストビューここまで //
