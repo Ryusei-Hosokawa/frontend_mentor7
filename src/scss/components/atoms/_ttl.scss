@@ -8,14 +8,13 @@
         font-family: $fontGothic;
         font-family: 'Big Shoulders Display', sans-serif;
         font-weight: 900;
+        color: $color;
         @if $type == 'siteTtl' {
             font-size: 96px;
             line-height: 1.1em;
-            color: $color;
         } @else if $type == 'default' {
             font-size: 60px;
             line-height: 1em;
-            color: $color;
         }
         @content;
     }

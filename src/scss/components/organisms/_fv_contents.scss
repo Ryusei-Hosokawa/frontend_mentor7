@@ -7,10 +7,19 @@
 // ファーストビューのコンテンツコンポーネントここから //
 @mixin fv_contents() {
     .contents__cover {
-        position: relative;
-        z-index: 10;
         display: flex;
         justify-content: space-between;
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -270px;
+            z-index: 10;
+            width: 50vw;
+            height: 800px;
+            background: #fff;
+            mix-blend-mode: difference;
+        }
         @include atom.ttl("siteTtl");
         @include molecule.txt_cover();
     }

@@ -4,6 +4,7 @@
 @use '../organisms/index' as organism;
 /* トップページここから */
 @mixin top() {
+    background: #fff;
     @include organism.fv();
 }
 /* トップページここまで */
