@@ -1,0 +1,69 @@
+@charset "utf-8";
+
+@use "../../utility/_index.scss" as *;
+@use "../atoms/_index.scss" as atom;
+@use "../molecules/_index.scss" as molecule;
+
+// ファーストビューここから //
+@mixin seco_contents() {
+    .contents__cover {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 30px;
+        &.first {
+            @include max(750px) {
+                flex-direction: column-reverse;
+                max-width: 343px;
+                margin: 0 auto;
+            }
+        }
+        @include max(1150px) {
+            flex-wrap: nowrap;
+            gap: 10px;
+            @include max(750px) {
+                flex-wrap: wrap;
+            }
+        }
+        &:not(:last-child) {
+            margin: 0 0 30px;
+            @include max(1150px) {
+                margin: 0 0 11px;
+            }
+            @include max(sp) {
+                margin: 0 0 16px;
+            }
+        }
+        .img__and__txts__item {
+            width: 100%;
+            max-width: 445px;
+            @include max(1150px) {
+                max-width: 40.7%;
+                @include max(750px) {
+                    max-width: 100%;
+                }
+            }
+        }
+        @include molecule.txts_card();
+        @include molecule.txts_card('black');
+        @include atom.img(img01, 635px, 0);
+        @include max(1150px) {
+            @include atom.img(img01, 57.7%, 0);
+        }
+        @include max(750px) {
+            @include atom.img(img01, 100%, 0);
+        }
+        @include atom.img(img02, 635px, 0);
+        @include max(1150px) {
+            @include atom.img(img02, 57.7%, 0);
+        }
+        @include max(750px) {
+            @include atom.img(img02, 100%, 0);
+        }
+        @include atom.img(img03, 445px, 0 0 30px);
+        @include max(1150px) {
+            @include atom.img(img03, 100%, 0 0 11px);
+        }
+    }
+}
+// ファーストビューここまで //

@@ -1,4 +1,20 @@
 @charset "utf-8";
 
-// ここから //
-// ここまで //
+@use "../../utility/_index.scss" as *;
+
+// 画像幅指定ここから //
+@mixin img($className: null, $widthValue: null, $mValue: null) {
+    @if $className == null or $widthValue == null {
+        @error "You must provide a $className and $widthValue value.";
+    }
+    .img__cover.#{'#{$className}'} {
+        width: 100%;
+        max-width: $widthValue;
+        margin: $mValue;
+        @include max(1150px) {
+            width: $widthValue;
+            margin: $mValue;
+        }
+    }
+}
+// 画像幅指定ここまで //

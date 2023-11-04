@@ -1,0 +1,22 @@
+@charset "utf-8";
+
+@use "../../utility/_index.scss" as *;
+@use "./_seco_contents.scss" as organism;
+// セカンダリーセクションここから //
+@mixin seco() {
+    @include base();
+    @include max(1150px) {
+        @include base($objectWidth: 689px, $sidePadding: 40px);
+    }
+    @include max(750px) {
+        @include base($objectWidth: 343px, $sidePadding: 16px);
+    }
+    .sect__seco {
+        padding: 180px 0;
+        @include max(1150px) {
+            padding: 120px 0;
+        }
+        @include organism.seco_contents();
+    }
+}
+// セカンダリーセクションここまで //

@@ -13,23 +13,24 @@
         font-weight: 900;
         line-height: 1em;
         letter-spacing: 0.2em;
-        color: #fff;
-        background: #000;
-        border: 1px solid #000;
-        transition: all 0.3s ease;
+        color: $baseColor;
+        background: $mainColor;
+        border: 1px solid $mainColor;
+        transition: all 0.4s ease;
         @if $type == "default" {
-            padding: 24px 80px 24px 28px;
+            padding: 24px 91px 24px 32px;
             &::before {
                 content: "";
                 position: absolute;
                 top: 0;
                 right: 0;
-                width: 50px;
+                width: 54px;
                 height:  100%;
-                background: #D5966C;
+                background: $accentColor;
                 box-sizing: content-box;
-                border: solid 1px #D5966C;
+                border: solid 1px $accentColor;
                 transform: translate(1px, -1px);
+                transition: all 0.4s ease;
             }
             &::after {
                 content: "";
@@ -39,44 +40,50 @@
                 width: 14px;
                 height: 14px;
                 background: transparent;
-                border-right: solid 1px #fff;
-                border-bottom: solid 1px #fff;
+                border-right: solid 1px $baseColor;
+                border-bottom: solid 1px $baseColor;
                 transform: translate(0%, -50%) rotate(-45deg) skew(-10deg, -10deg);
+                transition: all 0.4s ease;
             }
         } @else if $type == "left" {
-            padding: 24px 30px 24px 80px;
+            padding: 24px 32px 24px 91px;
             &::before {
                 content: "";
                 position: absolute;
                 top: 0;
                 left: 0;
-                width: 50px;
+                width: 54px;
                 height:  100%;
-                background: #D5966C;
+                background: $accentColor;
                 box-sizing: content-box;
-                border: solid 1px #D5966C;
+                border: solid 1px $accentColor;
                 transform: translate(-1px, -1px);
+                transition: all 0.4s ease;
             }
             &::after {
                 content: "";
                 position: absolute;
                 top: 50%;
-                left: 18px;
+                left: 24px;
                 width: 14px;
                 height: 14px;
                 background: transparent;
-                border-left: solid 1px #fff;
-                border-top: solid 1px #fff;
+                border-left: solid 1px $baseColor;
+                border-top: solid 1px $baseColor;
                 transform: translate(0%, -50%) rotate(-45deg) skew(-10deg, -10deg);
+                transition: all 0.4s ease;
             }
         }
-        @include max(lg) {
-            font-size: 22px;
-            line-height: 1.45em;
+        &:hover {
+            background: $accentColor;
+            border: 1px solid $accentColor;
+            color: $baseColor;
+            &::before {
+                background: $mainColor;
+                border: solid 1px $mainColor;
+            }
         }
         @include max(md) {
-            font-size: 18px;
-            line-height: 1.55em;
         }
     }
 }

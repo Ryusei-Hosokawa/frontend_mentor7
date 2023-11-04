@@ -7,7 +7,13 @@
 @mixin fv() {
     .sect__fv {
         position: relative;
-        padding: 189px 0 180px;
+        padding: 190px 0 314px;
+        @include max(1150px) {
+            padding: 145px 0;
+        }
+        @include max(750px) {
+            padding: 272px 0 0;
+        }
         @include organism.fv_contents();
         &::before {
             content: "";
@@ -17,10 +23,28 @@
             transform: translateX(-50%);
             z-index: -10;
             width: 540px;
-            height: 800px;
+            height: 100%;
             background: url(../../../assets/img/top/img01.jpg) no-repeat 50% 50% / cover;
+            @include max(1150px) {
+                transform: translateX(0%);
+                width: 437px;
+                left: 0;
+                background: url(../../../assets/img/top/img01_tb.jpg) no-repeat 50% 50% / cover;
+            }
+            @include max(750px) {
+                display: block;
+                width: 100%;
+                height: 240px;
+                background: url(../../../assets/img/top/img01_sp.jpg) no-repeat 50% 50% / cover;
+            }
         }
         @include base();
+        @include max(1150px) {
+            @include base($objectWidth: 689px, $sidePadding: 40px);
+        }
+        @include max(750px) {
+            @include base($objectWidth: 343px, $sidePadding: 16px);
+        }
     }
 }
 // ファーストビューここまで //

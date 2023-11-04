@@ -5,23 +5,25 @@
 @use "./media_query" as *;
 
 // brのレスポンシブ対応ここから //
-br.lg {
+
+br:where(.lg, .md, .sm) {
     display: none;
-    @include min(md) {
-        display: block !important;
+}
+    
+br.lg {
+    @include min(1150px) {
+        display: block;
     }
 }
 
 br.md {
-    display: none;
-    @include between(sm, 768px) {
-        display: block !important;
+    @include between(481px, 1149px) {
+        display: block;
     }
 }
 
 br.sm {
-    display: none;
     @include max(sm) {
-        display: block !important;
+        display: block;
     }
 }

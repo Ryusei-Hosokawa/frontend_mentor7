@@ -6,17 +6,38 @@
 @use "../../utility/_index.scss" as *;
 
 // テキストここから //
-@mixin txt($type: "default", $mValue: 0, $color: #000) {
+@mixin txt($type: "default", $mValue: 0, $color: #444) {
     .txt {
         font-family: $fontStaTxt;
         font-weight: 300;
         margin: $mValue;
         color: $color;
-        font-size: 22px;
-        line-height: 1.45em;
-        @include max(md) {
+        @include max(1150px) {
             font-size: 18px;
             line-height: 1.55em;
+        }
+        @if $type == "default" {
+            font-size: 22px;
+            line-height: 1.45em;
+            @include max(750px) {
+                font-size: 18px;
+                line-height: 1.625em;
+                margin: $mValue;
+            }
+        } @else if $type == "footer" {
+            font-size: 18px;
+            line-height: 1.55em;
+            width: 430px;
+            margin: $mValue;
+            @include max(1150px) {
+                font-size: 16px;
+                line-height: 1.625em;
+                width: 279px;
+                margin: $mValue;
+                @include max(750px) {
+                    width: 100%;
+                }
+            }
         }
     }
 }

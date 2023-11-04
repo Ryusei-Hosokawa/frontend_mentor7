@@ -1,0 +1,44 @@
+@charset "utf-8";
+
+@use "../../utility/index" as *;
+@use "../atoms/_index.scss" as atom;
+
+// ファーストビューのコンテンツコンポーネントここから //
+@mixin txts_card($type: "white") {
+    .txts__item.#{"#{$type}"} {
+        width: 100%;
+
+        @if $type == "white" {
+            @include atom.ttl($marginSpace: 60px 0 32px);
+            @include max(1150px) {
+                max-width: 223px;
+                @include atom.ttl($marginSpace: 36px 0 24px);
+            }
+            @include max(750px) {
+                max-width: 100%;
+                @include atom.ttl($marginSpace: 25px 0 21px);
+                @include atom.txt($mValue: 0 0 32px);
+            }
+            @include atom.txt();
+            max-width: 350px;
+            padding: 0;
+            background: transparent;
+        } @else if $type == "black" {
+            @include atom.ttl($color: #fff, $marginSpace: 0 0 32px);
+            @include atom.txt($color: #fff);
+            max-width: 445px;
+            padding: 65px 47px 64px 48px;
+            background: #151515;
+            @include max(1150px) {
+                max-width: 280px;
+                padding: 81px 28px;
+                @include max(750px) {
+                    @include atom.ttl($color: #fff, $marginSpace: 0 0 24px);
+                    max-width: 100%;
+                    padding: 48px 24px 47px;
+                }   
+            }
+        }
+    }
+}
+// ファーストビューのコンテンツコンポーネントここまで //

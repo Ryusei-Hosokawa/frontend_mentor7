@@ -1,7 +1,25 @@
 @charset "utf-8";
 
+@use '../../utility/_index.scss' as *;
+@use '../atoms/_index.scss' as atom;
+@use '../molecules/_index.scss' as molecule;
+@use '../organisms/_index.scss' as organism;
+
 // footerここから //
 @mixin footer() {
-    
+    footer {
+        background: #000;
+        padding: 80px 0;
+        @include base();
+        @include max(1150px) {
+            padding: 56px 0;
+            @include base($objectWidth: 689px, $sidePadding: 40px);
+        }
+        @include max(750px) {
+            padding: 48px 0;
+            @include base($objectWidth: 311px, $sidePadding: 32px);
+        }
+        @include organism.footer_contents();
+    }
 }
 // footerここまで //

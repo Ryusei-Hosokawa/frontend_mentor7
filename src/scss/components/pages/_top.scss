@@ -1,10 +1,12 @@
 @charset "utf-8";
 
 @use '../atoms/index' as atom;
-@use '../organisms/index' as organism;
+@use '../organisms/_index.scss' as organism;
+
 /* トップページここから */
 @mixin top() {
     background: #fff;
     @include organism.fv();
+    @include organism.seco();
 }
 /* トップページここまで */

@@ -1,0 +1,19 @@
+@charset "utf-8";
+
+@use '../../utility/_index.scss' as *;
+@use '../atoms/_index.scss' as atom;
+
+// footerここから //
+@mixin icon_cover() {
+    .icon__cover {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 100%;
+        max-width: 100px;
+        @include atom.icon($className: 'facebook');
+        @include atom.icon($className: 'instagram');
+        @include atom.icon($className: 'twitter');
+    }
+}
+// footerここまで //

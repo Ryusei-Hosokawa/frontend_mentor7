@@ -2,11 +2,28 @@
 
 @use "../../utility/index" as *;
 @use "../atoms/_index.scss" as atom;
+@use "../molecules/_index.scss" as molecule;
 
 // 通常コンテンツサブタイトルここから //
 @mixin footer_contents() {
     .footer__contents {
-        
+        display: flex;
+        justify-content: center;
+        @include atom.ttl($type: "footer", $color: #fff, $marginSpace: 0 140px 0 0, $size: 32px, $lineHeight: 0.9em);
+        @include max(1150px) {
+            @include atom.ttl($type: "footer", $color: #fff, $marginSpace: 0 65px 0 0, $size: 22px, $lineHeight: 0.9em);
+        }
+        @include atom.txt($type: "footer", $color: #fff, $mValue: 0 280px 0 0);
+        @include max(1150px) {
+            @include atom.txt($type: "footer", $color: #fff, $mValue: 0 133px 0 0);
+            @include max(750px) {
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                @include atom.ttl($type: "footer", $color: #fff, $marginSpace: 0 0 38px, $size: 22px, $lineHeight: 1em);
+                @include atom.txt($type: "footer", $color: #fff, $mValue: 0 0 38px);
+            }
+        }
+        @include molecule.icon_cover();
     }
 }
 // 通常コンテンツサブタイトルここまで //

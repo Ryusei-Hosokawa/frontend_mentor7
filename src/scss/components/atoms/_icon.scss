@@ -1,0 +1,37 @@
+@charset "utf-8";
+
+@use '../../utility/_index.scss' as *;
+
+// footerここから //
+@mixin icon($className: 'facebook') {
+    .icon.#{$className} {
+        display: block;
+        width: 100%;
+        background: no-repeat center center / contain;
+        transition: all 0.4s ease-in-out;
+        @if $className == 'facebook' {
+            max-width: 20px;
+            height: 20px;
+            background-image: svgFaceBook($strokeColor: 'none', $fillColor: encode(#fff));
+            &:hover {
+                background-image: svgFaceBook($strokeColor: 'none', $fillColor: encode($accentColor));
+            }
+        } @else if $className == 'instagram' {
+            max-width: 20px;
+            height: 20px;
+            background-image: svgInstagram($strokeColor: 'none', $fillColor: encode(#fff));
+            &:hover {
+                background-image: svgInstagram($strokeColor: 'none', $fillColor: encode($accentColor));
+            }
+        } @else if $className == 'twitter' {
+            max-width: 20px;
+            height: 16.25px;
+            background-image: svgTwitter($strokeColor: 'none', $fillColor: encode(#fff));
+            &:hover {
+                background-image: svgTwitter($strokeColor: 'none', $fillColor: encode($accentColor));
+            }
+        }
+
+    }
+}
+// footerここまで //

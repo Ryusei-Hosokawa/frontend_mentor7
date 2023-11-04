@@ -1,12 +1,18 @@
 @charset "utf-8";
 
-@use '../atoms/index' as atom;
+@use '../../utility/_index.scss' as *;
+@use '../atoms/_index.scss' as atom;
 // テキストとボタンを囲う要素ここから //
 @mixin txt_cover() {
     .txt__cover {
-        width: 31%;
+        width: 100%;
+        max-width: 350px;
         @include atom.txt($mValue: 0 0 64px);
         @include atom.btn();
+        @include max(md) {
+            max-width: 339px;
+            @include atom.txt($mValue: 0 0 48px);
+        }
     }
    
 }

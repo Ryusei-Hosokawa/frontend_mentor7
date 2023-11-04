@@ -9,6 +9,14 @@
     .contents__cover {
         display: flex;
         justify-content: space-between;
+        @include max(1150px) {
+            flex-direction: column;
+            max-width: 339px;
+            margin: 0 24px 0 auto;
+        }
+        @include max(750px) {
+            margin: 0 auto;
+        }
         &::before {
             content: "";
             position: absolute;
@@ -16,9 +24,12 @@
             left: -270px;
             z-index: 10;
             width: 50vw;
-            height: 800px;
+            height: 100%;
             background: #fff;
             mix-blend-mode: difference;
+            @include max(1150px) {
+                display: none;
+            }
         }
         @include atom.ttl("siteTtl");
         @include molecule.txt_cover();
