@@ -23,7 +23,7 @@ include($path . 'libs/head.php');
                             The arts in the collection of the Modern Art Gallery all started from a spark of
                             inspiration. Will these pieces inspire you? Visit us and find out.
                         </p>
-                        <a href="#" class="btn">
+                        <a href="<?php echo APP_ASSETS; ?>/../../map/index.php" class="btn">
                             OUR LOCATION
                         </a>
                     </div>

@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+@use '../components/pages/index' as *;
+@use "../components/templates/_index.scss" as template;
+
+// マップページここから //
+#map {
+    @include template.header();
+    @include map();
+    @include template.footer(map);
+}
+// マップページここまで //

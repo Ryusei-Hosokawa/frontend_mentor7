@@ -1,0 +1,29 @@
+@charset "utf-8";
+
+@use "../../utility/index" as *;
+@use "../atoms/_index.scss" as atom;
+
+// ファーストビューのコンテンツコンポーネントここから //
+@mixin map_item() {
+    .txt__item {
+        width: 48.6%;
+        @include max(md) {
+            width: 100%;
+        }
+        @include atom.ttl(
+            $type: "mapContentsTtl",
+            $color: $accentColor,
+            $marginSpace: 0 0 20px,
+            $size: 36px,
+            $lineHeight: 1em
+        );
+        @include max(md) {
+            $size: 32px;
+        }
+        @include atom.txt($color: #fff, $mValue: 0 0 20px);
+        p.txt:last-child {
+            margin: 0;
+        }
+    }
+}
+// ファーストビューのコンテンツコンポーネントここまで //

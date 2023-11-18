@@ -1,0 +1,10 @@
+@charset "utf-8";
+
+@use "../../utility/index" as *;
+
+// マップ背景のコンテンツコンポーネントここから //
+@mixin map_bg() {
+    height: 600px;
+    background: url(../../../assets/img/map/map.jpg) no-repeat 50% 50% / cover;
+}
+// マップ背景取り付けのコンテンツコンポーネントここまで //
