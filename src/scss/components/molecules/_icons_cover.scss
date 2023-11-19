@@ -4,16 +4,16 @@
 @use '../atoms/_index.scss' as atom;
 
 // footerここから //
-@mixin icon_cover() {
+@mixin icon_cover($footerType: 'top') {
     .icon__cover {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
         width: 100%;
         max-width: 100px;
-        @include atom.icon($className: 'facebook');
-        @include atom.icon($className: 'instagram');
-        @include atom.icon($className: 'twitter');
+        @include atom.icon($type: #{$footerType}, $className: 'facebook');
+        @include atom.icon($type: #{$footerType}, $className: 'instagram');
+        @include atom.icon($type: #{$footerType}, $className: 'twitter');
     }
 }
 // footerここまで //

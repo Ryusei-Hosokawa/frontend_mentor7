@@ -6,9 +6,13 @@
 @use '../organisms/_index.scss' as organism;
 
 // footerここから //
-@mixin footer() {
+@mixin footer($footerType: 'top') {
     footer {
-        background: #000;
+        @if $footerType == 'top' {
+            background: #000;
+        } @else if $footerType == 'map' {
+            background: $accentColor;
+        }
         padding: 80px 0;
         @include base();
         @include max(1150px) {
@@ -19,7 +23,7 @@
             padding: 48px 0;
             @include base($objectWidth: 311px, $sidePadding: 32px);
         }
-        @include organism.footer_contents();
+        @include organism.footer_contents(#{$footerType});
     }
 }
 // footerここまで //

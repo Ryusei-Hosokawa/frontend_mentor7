@@ -3,32 +3,56 @@
 @use '../../utility/_index.scss' as *;
 
 // footerここから //
-@mixin icon($className: 'facebook') {
+@mixin icon($type: 'top', $className: 'facebook') {
     .icon.#{$className} {
         display: block;
         width: 100%;
         background: no-repeat center center / contain;
-        transition: all 0.4s ease-in-out;
+        transition: all 0.4s ease-in;
         @if $className == 'facebook' {
             max-width: 20px;
             height: 20px;
-            background-image: svgFaceBook($strokeColor: 'none', $fillColor: encode(#fff));
+            @if $type == 'top' {
+                background-image: svgFaceBook($strokeColor: 'none', $fillColor: encode(#fff));
+            } @else if $type == 'map' {
+                background-image: svgFaceBook($strokeColor: 'none', $fillColor: encode($mainColor));
+            }
             &:hover {
-                background-image: svgFaceBook($strokeColor: 'none', $fillColor: encode($accentColor));
+                @if $type == 'top' {
+                    background-image: svgFaceBook($strokeColor: 'none', $fillColor: encode($accentColor));
+                } @else if $type == 'map' {
+                    background-image: svgFaceBook($strokeColor: 'none', $fillColor: encode(#fff));
+                }
             }
         } @else if $className == 'instagram' {
             max-width: 20px;
             height: 20px;
-            background-image: svgInstagram($strokeColor: 'none', $fillColor: encode(#fff));
+            @if $type == 'top' {
+                background-image: svgInstagram($strokeColor: 'none', $fillColor: encode(#fff));
+            } @else if $type == 'map' {
+                background-image: svgInstagram($strokeColor: 'none', $fillColor: encode($mainColor));
+            }
             &:hover {
-                background-image: svgInstagram($strokeColor: 'none', $fillColor: encode($accentColor));
+                @if $type == 'top' {
+                    background-image: svgInstagram($strokeColor: 'none', $fillColor: encode($accentColor));
+                } @else if $type == 'map' {
+                    background-image: svgInstagram($strokeColor: 'none', $fillColor: encode(#fff));
+                }
             }
         } @else if $className == 'twitter' {
             max-width: 20px;
             height: 16.25px;
-            background-image: svgTwitter($strokeColor: 'none', $fillColor: encode(#fff));
+            @if $type == 'top' {
+                background-image: svgTwitter($strokeColor: 'none', $fillColor: encode(#fff));
+            } @else if $type == 'map' {
+                background-image: svgTwitter($strokeColor: 'none', $fillColor: encode($mainColor));
+            }
             &:hover {
-                background-image: svgTwitter($strokeColor: 'none', $fillColor: encode($accentColor));
+                @if $type == 'top' {
+                    background-image: svgTwitter($strokeColor: 'none', $fillColor: encode($accentColor));
+                } @else if $type == 'map' {
+                    background-image: svgTwitter($strokeColor: 'none', $fillColor: encode(#fff));
+                }
             }
         }
 

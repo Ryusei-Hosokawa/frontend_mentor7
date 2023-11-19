@@ -1,13 +1,12 @@
 @charset "utf-8";
 
-@use "../utility/_index.scss" as *;
-@use "../components/pages/_index.scss" as page;
+@use "../components/pages/_index.scss" as *;
 @use "../components/templates/_index.scss" as template;
 
 /* トップページここから */
 #top {
     @include template.header();
-    @include page.top();
+    @include top();
     @include template.footer();
 }
 /* トップページここまで */

@@ -1,0 +1,15 @@
+@charset "utf-8";
+
+@use "../../utility/index" as *;
+@use "../atoms/_index.scss" as atom;
+
+// ファーストビューのコンテンツコンポーネントここから //
+@mixin map_contents() {
+    .map__sec {
+        @include atom.map_bg();
+        @include base() {
+            @include atom.btn(left);
+        }
+    } 
+}
+// ファーストビューのコンテンツコンポーネントここまで //

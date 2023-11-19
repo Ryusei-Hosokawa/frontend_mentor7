@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+@use '../molecules/_index.scss' as molecule;
+@use '../organisms/_index.scss' as organism;
+
+/* マップページここから */
+@mixin map() {
+    background: #fff;
+    @include molecule.map_contents();
+    @include organism.map_txt_contents();
+}
+/* マップページここまで */

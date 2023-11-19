@@ -1,0 +1,53 @@
+@charset "utf-8";
+
+@use "../../utility/index" as *;
+@use "../atoms/_index.scss" as atom;
+@use "../molecules/_index.scss" as molecule;
+
+// マップページのテキストのコンテンツコンポーネントここから //
+@mixin map_txt_contents() {
+    .txt__contents__sec {
+        padding: 104px 0 128px;
+        background: #000;
+        @include max(md) {
+            padding: 80px 0;
+            @include max(sm) {
+                padding: 48px 0 56px;
+            }
+        }
+        @include base();
+        @include max(1150px) {
+            @include base($objectWidth: 769px);
+        }
+        .txt__contents--box {
+            display: flex;
+            gap: 0 19.5%;
+            @include max(1150px) {
+                gap: 0 9.8%;
+                @include max(690px) {
+                    flex-direction: column;
+                    gap: 48px 0;
+                }
+            }
+            h2 {
+                width: 100%;
+                max-width: 350px;
+                @include max(md) {
+                    max-width: 223px;
+                    @include max(sm) {
+                        max-width: 100%;
+                    }
+                }
+            }
+            @include atom.ttl($type: "mapContentsTtl", $color: #fff, $marginSpace: 0, $lineHeight: 1em);
+            @include max(md) {
+                @include atom.ttl($type: "mapContentsTtl", $color: #fff, $marginSpace: 0,$size: 55px, $lineHeight: 1em);
+                @include max(sm) {
+                    @include atom.ttl($type: "mapContentsTtl", $color: #fff, $marginSpace: 0,$size: 50px, $lineHeight: 1em);
+                }
+            }
+            @include molecule.map_item();
+        }
+    }
+}
+// マップページのテキストのコンテンツコンポーネントここまで //
