@@ -1,0 +1,39 @@
+.react-router
+
+# 依存関係ディレクトリ（Dockerfile内で再インストールするため不要）
+node_modules
+
+# バージョン管理システム
+.git
+.gitignore
+
+# 環境変数ファイル（セキュリティのため除外）
+.env
+.env.local
+.env.production
+
+# ビルド成果物（Dockerfile内で再ビルドするため不要）
+build
+dist
+
+# OS固有のファイル
+.DS_Store
+Thumbs.db
+
+# エディタ固有のファイル
+.vscode
+.idea
+
+# ログファイル
+*.log
+
+# テストカバレッジ
+coverage
+
+# その他の不要ファイル
+README.md
+.dockerignore
+Dockerfile
+Dockerfile.original
+docker-compose.yml
+.env.development

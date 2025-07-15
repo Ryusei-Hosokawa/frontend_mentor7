@@ -1,0 +1,37 @@
+# Bun v1.2.18 + VPS最適化設定
+
+[install]
+# 依存関係の厳密管理
+cache = true
+lockfile = true
+exact = true
+registry = "https://registry.npmjs.org"
+
+# VPS用キャッシュ設定
+cache-dir = "/tmp/bun-cache"
+
+# 本番環境での最適化
+production = false
+
+[run]
+# Node.js ランタイムを使用（SSR互換性のため）
+bun = false
+shell = "system"
+
+[build]
+# ビルド最適化
+target = "bun"
+minify = true
+sourcemap = false
+
+# React Router v7 用設定
+jsx = "automatic"
+jsx-runtime = "automatic"
+
+[test]
+# テスト設定（開発時用）
+preload = ["./test/setup.ts"]
+
+[macro]
+# マクロ機能の有効化
+react-refresh = true

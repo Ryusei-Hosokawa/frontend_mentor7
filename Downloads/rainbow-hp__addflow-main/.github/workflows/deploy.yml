@@ -1,0 +1,185 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Deployment environment'
+        required: false
+        default: 'production'
+        type: choice
+        options:
+          - development
+          - staging
+          - production
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Bun
+      uses: oven-sh/setup-bun@v2
+      with:
+        bun-version: latest
+    
+    - name: Cache dependencies
+      uses: actions/cache@v4
+      with:
+        path: ~/.bun/install/cache
+        key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb') }}
+        restore-keys: |
+          ${{ runner.os }}-bun-
+    
+    - name: Install dependencies
+      run: bun install --frozen-lockfile
+    
+    - name: Type check
+      run: bun run typecheck
+    
+    - name: Build application
+      run: bun run build
+    
+    - name: Build Storybook
+      run: bun run build-storybook
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    env:
+      DEPLOY_PATH: ${{ secrets.DEPLOY_PATH || '/var/www/html' }}
+      APP_PORT: ${{ secrets.APP_PORT || '3000' }}
+      APP_NAME: ${{ secrets.APP_NAME || 'app' }}
+      DOMAIN: ${{ secrets.DOMAIN || 'localhost' }}
+      NODE_ENV: ${{ secrets.NODE_ENV || 'production' }}
+      PM2_APP_NAME: ${{ secrets.PM2_APP_NAME || 'rainbow-app' }}
+      HEALTH_CHECK_PATH: ${{ secrets.HEALTH_CHECK_PATH || '/health' }}
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Bun
+      uses: oven-sh/setup-bun@v2
+      with:
+        bun-version: latest
+    
+    - name: Install dependencies
+      run: bun install --frozen-lockfile
+    
+    - name: Build for production
+      run: bun run build
+      env:
+        NODE_ENV: production
+    
+    - name: Deploy to VPS via SSH
+      uses: appleboy/ssh-action@v1.1.0
+      with:
+        host: ${{ secrets.VPS_IP }}
+        username: ${{ secrets.VPS_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: ${{ secrets.SSH_PORT || 22 }}
+        script: |
+          # 環境変数の設定
+          export DEPLOY_PATH="${{ env.DEPLOY_PATH }}"
+          export APP_PORT="${{ env.APP_PORT }}"
+          export APP_NAME="${{ env.APP_NAME }}"
+          export DOMAIN="${{ env.DOMAIN }}"
+          export NODE_ENV="${{ env.NODE_ENV }}"
+          export PM2_APP_NAME="${{ env.PM2_APP_NAME }}"
+          export HEALTH_CHECK_PATH="${{ env.HEALTH_CHECK_PATH }}"
+          
+          echo "=== Deployment Configuration ==="
+          echo "Deploy Path: $DEPLOY_PATH"
+          echo "App Port: $APP_PORT"
+          echo "App Name: $APP_NAME"
+          echo "Domain: $DOMAIN"
+          echo "Environment: $NODE_ENV"
+          echo "==============================="
+          
+          # デプロイディレクトリの作成・権限設定
+          sudo mkdir -p "$DEPLOY_PATH"
+          sudo chown -R $(whoami):$(whoami) "$DEPLOY_PATH"
+          
+          # プロジェクトディレクトリに移動
+          cd "$DEPLOY_PATH"
+          
+          # 初回の場合はクローン、既存の場合はプル
+          if [ ! -d ".git" ]; then
+            echo "Cloning repository..."
+            git clone ${{ github.repository_url }} .
+          else
+            echo "Pulling latest changes..."
+            git pull origin main
+          fi
+          
+          # 依存関係をインストール
+          echo "Installing dependencies..."
+          bun install --frozen-lockfile
+          
+          # プロダクションビルド
+          echo "Building application..."
+          NODE_ENV="$NODE_ENV" bun run build
+          
+          # プロセス管理（PM2を使用している場合）
+          if command -v pm2 > /dev/null; then
+            echo "Managing with PM2..."
+            pm2 restart "$PM2_APP_NAME" || pm2 start bun --name "$PM2_APP_NAME" -- run start
+          fi
+          
+          # Dockerを使用している場合
+          if [ -f "docker-compose.yml" ]; then
+            echo "Managing with Docker..."
+            docker-compose down
+            docker-compose up -d --build
+          fi
+          
+          # Nginxリロード
+          if command -v nginx > /dev/null; then
+            echo "Reloading Nginx..."
+            sudo systemctl reload nginx
+          fi
+          
+          # ヘルスチェック
+          echo "Performing health check..."
+          sleep 5
+          curl -f "http://$DOMAIN:$APP_PORT$HEALTH_CHECK_PATH" || exit 1
+          
+          echo "Deployment completed successfully!"
+    
+    - name: Notify deployment success
+      if: success()
+      uses: appleboy/ssh-action@v1.1.0
+      with:
+        host: ${{ secrets.VPS_IP }}
+        username: ${{ secrets.VPS_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: ${{ secrets.SSH_PORT || 22 }}
+        script: |
+          echo "Deployment completed successfully at $(date)"
+          
+    - name: Notify deployment failure
+      if: failure()
+      run: |
+        echo "Deployment failed. Please check the logs."
+        exit 1
+
+  # セキュリティスキャン（オプション）
+  security:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Run security audit
+      run: |
+        bun audit || true
+        
+    - name: Run vulnerability scan
+      uses: securecodewarrior/github-action-add-sarif@v1
+      if: false # セキュリティツールが利用可能な場合に有効化
+      with:
+        sarif-file: 'security-report.sarif'

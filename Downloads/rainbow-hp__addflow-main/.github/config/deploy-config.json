@@ -1,0 +1,90 @@
+{
+  "version": "1.0.0",
+  "description": "HP制作テンプレート用デプロイ設定",
+  "environments": {
+    "development": {
+      "path": "/var/www/sites/development",
+      "port": 3001,
+      "domain": "localhost",
+      "node_env": "development",
+      "pm2_app_name": "dev-app",
+      "health_check_path": "/health",
+      "docker_compose_profile": "dev",
+      "ssl_enabled": false,
+      "backup_enabled": true
+    },
+    "staging": {
+      "path": "/var/www/sites/staging",
+      "port": 3002,
+      "domain": "staging.example.com",
+      "node_env": "staging",
+      "pm2_app_name": "staging-app",
+      "health_check_path": "/health",
+      "docker_compose_profile": "staging",
+      "ssl_enabled": true,
+      "backup_enabled": true
+    },
+    "production": {
+      "path": "/var/www/html",
+      "port": 3000,
+      "domain": "example.com",
+      "node_env": "production",
+      "pm2_app_name": "production-app",
+      "health_check_path": "/health",
+      "docker_compose_profile": "",
+      "ssl_enabled": true,
+      "backup_enabled": true
+    }
+  },
+  "templates": {
+    "corporate": {
+      "description": "一般的な企業サイト",
+      "recommended_env": "production",
+      "features": ["contact_form", "cms_integration", "seo_optimization"]
+    },
+    "e-commerce": {
+      "description": "ECサイト",
+      "recommended_env": "production",
+      "features": ["payment_gateway", "inventory_management", "user_authentication"]
+    },
+    "portfolio": {
+      "description": "ポートフォリオサイト",
+      "recommended_env": "development",
+      "features": ["gallery", "blog", "contact_form"]
+    },
+    "landing": {
+      "description": "ランディングページ",
+      "recommended_env": "production",
+      "features": ["analytics", "a_b_testing", "conversion_tracking"]
+    }
+  },
+  "default_secrets": {
+    "required": [
+      "VPS_IP",
+      "VPS_USERNAME", 
+      "SSH_PRIVATE_KEY"
+    ],
+    "optional": [
+      "DEPLOY_PATH",
+      "APP_PORT",
+      "APP_NAME",
+      "DOMAIN",
+      "NODE_ENV",
+      "PM2_APP_NAME",
+      "HEALTH_CHECK_PATH",
+      "SMTP_HOST",
+      "SMTP_USER",
+      "SMTP_PASS",
+      "CMS_API_URL"
+    ]
+  },
+  "setup_checklist": [
+    "VPSの準備完了",
+    "SSH接続の確認",
+    "Docker/Bunのインストール",
+    "GitHub Secretsの設定",
+    "ドメイン/DNSの設定",
+    "SSL証明書の設定（本番環境）",
+    "メール設定（お問い合わせフォーム用）"
+  ]
+}
