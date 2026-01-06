@@ -1,0 +1,73 @@
+@charset "UTF-8";
+
+form {
+  max-width: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+#contactConfirm {
+  max-width: 1100px;
+  margin: 150px auto !important;
+}
+#contactConfirm .section__ttl {
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+#contactConfirm .form__txt.ps-r {
+  margin-bottom: 0;
+  text-align: center;
+}
+#contactConfirm form table {
+  width: 100%;
+  margin-bottom: 50px;
+}
+#contactConfirm tbody tr {
+  display: grid;
+  grid-template-columns: 1fr;
+  border: none;
+  margin-bottom: 15px;
+}
+#contactConfirm tbody td {
+  border: solid 2px #696969;
+  border-radius: 8px;
+  min-height: 52px;
+}
+#contactConfirm tbody th {
+  width: fit-content;
+}
+
+#contactConfirm form .form_submit_btn {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 20px;
+  width: 80%;
+  margin: 0 auto;
+}
+@media screen and (max-width: 450px) {
+  #contactConfirm form .form_submit_btn {
+    width: 100%;
+  }
+}
+#contactConfirm form button.reset__btn,
+#contactConfirm form .submit__btn {
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  width: 100%;
+  height: initial;
+  cursor: pointer;
+}
+#contactConfirm form .reset__btn {
+  background-color: white;
+  color: #333;
+  border: solid 2px #333;
+}
+#contactConfirm form .submit__btn {
+  background-color: #139efb;
+  color: white;
+  margin: 0;
+  border: none;
+}
