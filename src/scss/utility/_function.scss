@@ -18,25 +18,22 @@
 }
 // ブレークポイントの値を取得する関数ここまで //
 
-
 /*
- svg関数ここから 
+svg関数ここから 
 */
 /*
- svgリンク内での色指定では'#'を使用できないのを
- 色指定の引数を渡す際に通常のカラーコードで指定できるようにする関数 
+svgリンク内での色指定では'#'を使用できないのを
+色指定の引数を渡す際に通常のカラーコードで指定できるようにする関数 
 */
 @function encode($colorCode) {
     // 色コードから '#' を取り除いて '%23' に置き換えます。
     $colorCodeStr: inspect($colorCode); // 色コードを文字列に変換します。
     $colorCodeStr: str-slice($colorCodeStr, 2); // 先頭の '#' を取り除きます。
-    @return '%23' + $colorCodeStr;
+    @return "%23" + $colorCodeStr;
 }
 
-
-
 /* SVG画像（フェイスブック） */
-@function svgFaceBook($strokeColor: 'none', $fillColor: encode(#fff)) {
+@function svgFaceBook($strokeColor: "none", $fillColor: encode(#fff)) {
     @return url('data:image/svg+xml;charset=utf-8,<svg viewBox="0 0 20 20" fill="white" xmlns="http://www.w3.org/2000/svg"><path id="Path" d="M18.8958 0H1.10417C0.494167 0 0 0.494167 0 1.10417V18.8967C0 19.5058 0.494167 20 1.10417 20H10.6833V12.255H8.07667V9.23667H10.6833V7.01083C10.6833 4.4275 12.2608 3.02083 14.5658 3.02083C15.67 3.02083 16.6183 3.10333 16.895 3.14V5.84L15.2967 5.84083C14.0433 5.84083 13.8008 6.43667 13.8008 7.31V9.2375H16.79L16.4008 12.2558H13.8008V20H18.8975C19.5058 20 20 19.5058 20 18.8958V1.10417C20 0.494167 19.5058 0 18.8958 0Z" stroke="#{$strokeColor}" fill="#{$fillColor}"/></svg>');
 }
 

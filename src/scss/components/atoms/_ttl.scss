@@ -1,16 +1,16 @@
 @charset "utf-8";
 
-@use '../../utility/_index.scss' as *;
+@use "../../utility/_index.scss" as *;
 
 // タイトルここから //
-@mixin ttl($type: 'default', $color: #151515, $marginSpace: 0 0 34px, $size: 70px, $lineHeight: 1.1em) {
-    .ttl { 
+@mixin ttl($type: "default", $color: #151515, $marginSpace: 0 0 34px, $size: 70px, $lineHeight: 1.1em) {
+    .ttl {
         font-family: $fontGothic;
-        font-family: 'Big Shoulders Display', sans-serif;
+        font-family: "Big Shoulders Display", sans-serif;
         font-weight: 900;
         text-transform: uppercase;
         color: $color;
-        @if $type == 'siteTtl' {
+        @if $type == "siteTtl" {
             font-size: 96px;
             line-height: 1.1em;
             @include max(1150px) {
@@ -22,7 +22,7 @@
                 line-height: 0.9em;
                 margin: 0 0 24px;
             }
-        } @else if $type == 'default' {
+        } @else if $type == "default" {
             font-size: 60px;
             line-height: 1em;
             letter-spacing: 0.05em;
@@ -36,7 +36,7 @@
             @include max(750px) {
                 text-shadow: none;
             }
-        } @else  {
+        } @else {
             font-size: $size;
             line-height: $lineHeight;
             letter-spacing: 0.03em;

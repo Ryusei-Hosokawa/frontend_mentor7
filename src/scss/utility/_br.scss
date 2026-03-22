@@ -9,7 +9,7 @@
 br:where(.lg, .md, .sm) {
     display: none;
 }
-    
+
 br.lg {
     @include min(1150px) {
         display: block;
@@ -23,7 +23,7 @@ br.md {
 }
 
 br.sm {
-    @include max(sm) {
+    @include max(480px) {
         display: block;
     }
 }

@@ -2,13 +2,14 @@
 
 @use '../../utility/_index.scss' as *;
 
-// footerここから //
+// アイコン ここから //
 @mixin icon($type: 'top', $className: 'facebook') {
     .icon.#{$className} {
         display: block;
         width: 100%;
         background: no-repeat center center / contain;
         transition: all 0.4s ease-in;
+        
         @if $className == 'facebook' {
             max-width: 20px;
             height: 20px;
@@ -58,4 +59,4 @@
 
     }
 }
-// footerここまで //
+// アイコン ここまで //
